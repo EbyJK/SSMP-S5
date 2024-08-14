@@ -3,9 +3,9 @@
 #include <stdlib.h>
 
 struct {
-char dname[10];
-char fname[10][10];
-int fcnt;
+    char dname[10];
+    char fname[10][10];
+    int fcnt;
 
 }dir[10];
 
@@ -15,15 +15,19 @@ char f[30],d[30];
 //int flag=-1;
 int dcnt=0;
 while(1){
-printf("\n---MENU---\n");
-printf("--------------------");
-printf("\n 1.Create Directory\n 2.create File\n 3.delete File\n 4.Display File\n 5.Search File\n 6.Exit \n");
-printf("--------------------");
-printf("Enter choice :--\n");
-scanf("%d",&ch);
+    printf("---------------------------------------------");
+    printf("\n---MENU---\n");
+
+    printf("\n 1.Create Directory\n 2.create File\n 3.delete File\n 4.Display File\n 5.Search File\n 6.Exit \n");
+    printf("---------------------------------------------");
+    printf("Enter choice :--\n");
+    scanf("%d",&ch);
+
 switch(ch){
 
-case 1: printf("Enter directory name:--\n");
+case 1: 
+
+printf("Enter directory name:--\n");
 scanf("%s",dir[dcnt].dname);
 dir[dcnt].fcnt=0;
 dcnt ++;
@@ -32,6 +36,8 @@ break;
 
 
 case 2:
+
+
 printf("enter directory name where to create file\n");
 scanf("%s",d);
 for(i=0;i<dcnt;i++){
@@ -48,7 +54,10 @@ printf("directory not found. please create a directory  / use another directory\
 
 
 }
+
 case 3:
+
+
 int flag=-1;
 printf("enter the name of directory:--\n");
 scanf("%s",d);
@@ -81,33 +90,34 @@ if(flag==-1){
 }
 break;
  
-case 4: printf("enter name of directory:--");
-scanf("%s",d);
-for(i=0;i<dcnt;i++){
-if(strcmp(d,dir[i].dname)==0){
-printf("enter the name of the file:--");
-scanf("%s",f);
-for(k=0;k<dir[i].fcnt;k++){
-if(strcmp(f,dir[i].fname[k])){
-    //
-}
+case 4: 
+        printf("enter name of directory:--");
+        scanf("%s",d);
+        for(i=0;i<dcnt;i++){
+        if(strcmp(d,dir[i].dname)==0){
+        printf("enter the name of the file:--");
+        scanf("%s",f);
+        for(k=0;k<dir[i].fcnt;k++){
+                if(strcmp(f,dir[i].fname[k])){
+        //
+                    }
 
-}
+                }
 
-}
+        }
 
-}  
+        }         
 
+            
 
-
-
+        break;
 
 
 case 5:  //search
 
 case 6: printf("exitting program!\n");
-exit(0);
-break;
+        exit(0);
+        break;
 
 default: printf("invalid choice, Enter another choice..\n");
 
