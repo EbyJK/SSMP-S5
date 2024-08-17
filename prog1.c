@@ -5,7 +5,7 @@
 #include <string.h>
 
 struct {
-    char dname[10];
+    char dname[1];
     char fname[10][10];
     int fcnt;
 } dir;
@@ -15,7 +15,7 @@ void main() {
     char f[30];
 
     dir.fcnt = 0;
-    printf("\n Enter name of directory: ");
+    printf("\n Enter name of master file directory(MFD):");
     scanf("%s", dir.dname);
     
     while (1) {
@@ -54,7 +54,7 @@ void main() {
                 } else {
                     printf("\nThe files are: \n");
                     for (i = 0; i < dir.fcnt; i++) {
-                        // Print the full file path directly using printf
+                       
                         printf("\t%s/%s\n", dir.dname, dir.fname[i]);
                     }
                 }
