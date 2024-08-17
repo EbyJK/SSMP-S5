@@ -10,8 +10,10 @@ struct {
 }dir[10];
 
 void main(){
-int i,ch,dcnt,k;
+int i,ch,k;
 char f[30],d[30];
+ int flag=-1;
+int flag1=-1;
 //int flag=-1;
 int dcnt=0;
 while(1){
@@ -19,7 +21,7 @@ while(1){
     printf("\n---MENU---\n");
 
     printf("\n 1.Create Directory\n 2.create File\n 3.delete File\n 4.Display File\n 5.Search File\n 6.Exit \n");
-    printf("---------------------------------------------");
+    printf("---------------------------------------------\n");
     printf("Enter choice :--\n");
     scanf("%d",&ch);
 
@@ -31,7 +33,7 @@ printf("Enter directory name:--\n");
 scanf("%s",dir[dcnt].dname);
 dir[dcnt].fcnt=0;
 dcnt ++;
-printf("directory created");
+printf("directory created\n");
 break;
 
 
@@ -45,7 +47,7 @@ if(strcmp(d,dir[i].dname)==0){
 printf("enter the name of the file:--\n");
 scanf("%s",dir[i].fname[dir[i].fcnt]);
 dir[i].fcnt++;
-printf("file created");
+printf("file created\n");
 break;
 }
 }
@@ -54,30 +56,38 @@ printf("directory not found. please create a directory  / use another directory\
 
 
 }
+break;
 
 case 3:
 
 
-int flag=-1;
 printf("enter the name of directory:--\n");
 scanf("%s",d);
+
+// int flag=-1;
+// int flag1=-1;
 for(i=0;i<dcnt;i++){
 if (strcmp(d,dir[i].dname)==0)
 {
+flag=1;
 printf("enter name of the file:--\n");
 scanf("%s",f);
 for(k=0;k<dir[i].fcnt;k++){
 
 if(strcmp(f,dir[i].fname[k])==0)
 {
-printf("File %s is deleted..!",f);
+printf("File %s is deleted..!\n",f);
 dir[i].fcnt--;
 
 strcpy(dir[i].fname[k],dir[i].fname[dir[i].fcnt]);
-flag=1;
+flag1=1;
 }
 
 }
+
+}
+if (flag1==-1){
+        printf("file %s not found !!\n",f);
 }
 
 
@@ -85,38 +95,71 @@ flag=1;
 
 }
 if(flag==-1){
-   printf("directory  %s not found !!", d);
+   printf("directory  %s not found !!\n", d);
 
 }
+
+
 break;
  
 case 4: 
-        printf("enter name of directory:--");
-        scanf("%s",d);
-        for(i=0;i<dcnt;i++){
-        if(strcmp(d,dir[i].dname)==0){
-        printf("enter the name of the file:--");
-        scanf("%s",f);
-        for(k=0;k<dir[i].fcnt;k++){
-                if(strcmp(f,dir[i].fname[k])){
-        //
-                    }
-
-                }
-
+        if(dcnt==0){
+                printf("No directories\n");
         }
-
-        }         
-
+        else{
+                printf("\nDirectory\tFiles");
+                for(i=0;i<dcnt;i++){
+                        printf("\n%s\t",dir[i].dname);
+                        for(k=0;k<dir[i].fcnt;k++){
+                                printf("\t%s",dir[i].fname[k]);
+                        }
+                }
+        }
+        printf("\n");
             
 
         break;
 
 
-case 5:  //search
+case 5:   
+        printf("enter name of directory:--");
+        scanf("%s",d);
+       
+        for(i=0;i<dcnt;i++){
+                if(strcmp(d,dir[i].dname)==0){
+                        flag=1;
+                        printf("enter the name of the file:--");
+                        scanf("%s",f);
+                        for(k=0;k<dir[i].fcnt;k++){
+                                if(strcmp(f,dir[i].fname[k])==0){
+                                        flag1=1;
+                                        printf("file %s found\n",f);
+                                        printf("file path:\tMFD/%s/%s\n",d,f);
+        
+                    }
+
+                }
+        if(flag1==-1){
+                printf("file %s not found\n",f);
+        }
+
+
+        }
+         
+        if(flag==-1){
+                printf("directory not found !!\n");
+        }
+        
+        }         
+        
+        
+
+        break;
 
 case 6: printf("exitting program!\n");
+        printf("--------------------------\n");
         exit(0);
+       
         break;
 
 default: printf("invalid choice, Enter another choice..\n");
