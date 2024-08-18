@@ -65,7 +65,7 @@ void main() {
                 scanf("%s", f);
                 for (i = 0; i < dir.fcnt; i++) {
                     if (strcmp(f, dir.fname[i]) == 0) {
-                        // Print the full file path directly using printf
+                        
                         printf("File %s is found at path: %s/%s\n", f, dir.dname, f);
                         break;
                     }

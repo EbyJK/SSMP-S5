@@ -6,22 +6,21 @@
 #define MAX_FILES 10
 #define MAX_NAME 30
 
-// Define a structure for directories
 struct {
     char dname[MAX_NAME];
     char fname[MAX_FILES][MAX_NAME];
     int fcnt;
 } dir[MAX_DIR];
 
-char parentDir[MAX_NAME] = "";  // Global variable for the parent directory
-int dcnt = 0;  // Directory count
+char parentDir[MAX_NAME] = "";  
+int dcnt = 0;  
 
 int main() {
     int i, ch, k;
     char f[MAX_NAME], d[MAX_NAME];
     int flag = -1, flag1 = -1;
 
-    // Prompt the user to use an existing or create a new parent directory
+    
     printf("Do you want to use an existing parent directory or create a new one? (0 for existing, 1 for new): ");
     int choice;
     scanf("%d", &choice);
