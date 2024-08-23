@@ -1,13 +1,11 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 struct {
-    char dname[1];
-    char fname[10][10];
-    int fcnt;
+    char dname[50];  
+    char fname[10][10];  
+    int fcnt;  
 } dir;
 
 void main() {
@@ -15,7 +13,7 @@ void main() {
     char f[30];
 
     dir.fcnt = 0;
-    printf("\n Enter name of master file directory(MFD):");
+    printf("\nEnter name of master file directory (MFD): ");
     scanf("%s", dir.dname);
     
     while (1) {
@@ -28,8 +26,25 @@ void main() {
         switch (ch) {
             case 1:
                 printf("\nEnter the name of the file: ");
-                scanf("%s", dir.fname[dir.fcnt]);
-                dir.fcnt++;
+                scanf("%s", f);
+
+             
+                int fileExists = 0;
+                for (i = 0; i < dir.fcnt; i++) {
+                    if (strcmp(f, dir.fname[i]) == 0) {
+                        fileExists = 1;
+                        break;
+                    }
+                }
+
+                if (fileExists) {
+                    printf("\nFile %s already exists in the directory! Cannot create duplicate files.\n", f);
+                } else {
+                    
+                    strcpy(dir.fname[dir.fcnt], f);
+                    dir.fcnt++;
+                    printf("\nFile %s has been created successfully.\n", f);
+                }
                 break;
 
             case 2:
@@ -54,7 +69,6 @@ void main() {
                 } else {
                     printf("\nThe files are: \n");
                     for (i = 0; i < dir.fcnt; i++) {
-                       
                         printf("\t%s/%s\n", dir.dname, dir.fname[i]);
                     }
                 }
@@ -65,7 +79,6 @@ void main() {
                 scanf("%s", f);
                 for (i = 0; i < dir.fcnt; i++) {
                     if (strcmp(f, dir.fname[i]) == 0) {
-                        
                         printf("File %s is found at path: %s/%s\n", f, dir.dname, f);
                         break;
                     }
