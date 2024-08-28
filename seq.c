@@ -32,7 +32,7 @@ int main()
             printf("maximum no. files reached.\n");
             break;
         }
-        printf("enter name of the file %d:", totfile + 1);
+        printf("enter name of the file %d :\n", totfile + 1);
         scanf("%s", f[totfile].name);
         printf("enter no. of blocks required for file:\n");
         scanf("%d", &f[totfile].size);
@@ -73,15 +73,30 @@ int main()
             printf("file %s cannot be allocated\n", f[totfile].name);
         }
         printf("do you want to enter more files? (y/n):\n");
-        scanf("%c", &moreFiles);
-    } while (moreFiles == 'Y' || moreFiles == 'y');
+        scanf(" %c", &moreFiles);
+    }while(moreFiles == 'Y' || moreFiles == 'y');
 
     printf("\nfile allocation table\n");
+    printf("\n");
     printf("filename\t size\t blocks allocated\n");
     for (i = 0; i < totfile; i++)
     {
         if (f[i].alloc)
         {
+            printf("%s\t\t%d\t\t",f[i].name,f[i].size);
+            for(j=f[i].start;j<f[i].start+ f[i].block;j++){
+                printf("%d ",j);
+                if(j<f[i].start+ f[i].block -1){
+                    printf("");
+
+                }
+            }
+            printf("\n");
+
+        }
+        else{
+            printf("%s\t\tNot allocated\n",f[i].name);
         }
     }
+    return 0;
 }
