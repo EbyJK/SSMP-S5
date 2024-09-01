@@ -55,11 +55,25 @@ int main(){
 
 
         printf("do you want to enter more files ? (Y/n)\n");
-        scanf("%c",&ch);
-    }while(ch=="Y" || ch=="y");
+        scanf("%c ",&ch);
+    }while(ch=='Y'||ch=='y');
+    
 
-
-
+    printf("FIle allocation table\n");
+    printf("\nIndex\tFile name\t FIle Size\t Blocks Allocated\n");
+    for(i=0;i<totfile;i++){
+        if(f[i].alloc){
+            printf("%d\t%s\t\t%d\t\t",f[i].index,f[i].name,f[i].size);
+            for(j=0;j<f[i].block;j++){
+                printf("%d",f[i].bno[j]);
+            }
+            printf("\n");
+        }
+        else{
+            printf("%s\t\tNot allocated\n",f[i].name);
+        }
+    }
+  return 0;
 
 
 }
