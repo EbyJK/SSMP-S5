@@ -48,7 +48,7 @@ int main() {
 
         if (f[totfile].size > available_blocks) {
             printf("Not enough blocks available to allocate the file '%s'. Exiting...\n", f[totfile].name);
-            break;  // Exit the loop if there aren't enough blocks
+            break;  
         }
 
         f[totfile].block = f[totfile].size;
