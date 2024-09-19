@@ -11,6 +11,7 @@ struct process{
 int main(){
             int msize,fsize,totfr,remfr,ch;
             int top=0;
+            int infrag;
             printf("Enter memory size: \n");
             scanf("%d",&msize);
             printf("enter frame size:\n");
@@ -37,6 +38,25 @@ int main(){
                         printf("enter process size:\n");
                         scanf("%d",&p[top].size);
                         
+                        p[top].nofr=(p[top].size+fsize-1)/fsize;
+                        if(p[top].nofr>remfr){
+                            printf("Memory overflow!\n choose a smaller size!\n");
+                        }
+                        remfr -= p[top].nofr;
+
+                        for(int i=0;i<p[top].nofr;i++){
+                            p[top].fno[i] =rand() % msize +1;
+                        }
+                        top++;
+
+                        printf("\n Process SIze Frames\n");
+                        infrag=0;
+                        for(int i=0;i<top;i++){
+                            printf("%7d%7d", p[i].id,p[i].size);
+                            for(int j=0;j<p[i].nofr;j++){
+                                printf("%2d",p[i].fno[j]);
+                            }
+                        }
                     }
                 }
             }
