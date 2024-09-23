@@ -9,24 +9,25 @@ struct Alloc_Table{
     int size;
 };
 void main(){
-    int ch,count=0,size_used=0,totalsize=0,in,prev,current;
+    int count=0,size_used=0,totalsize=0,in,prev,current;
+    char ch;
     struct Alloc_Table A[100];
     
     printf("\tLinked File Allocation\n");
-    printf("Enter the Total No. of Blocks : ");
+    printf("Enter the Total No. of Blocks : \n");
     scanf("%d",&totalsize);
     int mem[totalsize];
     for(int i=0;i<totalsize;i++){
         mem[i]=-1;
     }
     while(1){
-        printf("Enter the Name of the File : ");
+        printf("Enter the Name of the File : \n");
         scanf("%s",A[count].Name);
-        printf("Enter the number of blocks for File : ");
+        printf("Enter the number of blocks for File : \n");
         scanf("%d",&A[count].size);
         size_used+=A[count].size;
         if(size_used>totalsize){
-            printf("Not Enough Space! File Cannot Be Allocated\n");
+            printf("\nNot Enough Space! File Cannot Be Allocated\n");
             size_used-=A[count].size;
         }
         else{
@@ -49,9 +50,9 @@ void main(){
             mem[prev]=-3;//end
             count++;
         }
-        printf("Do you want to add more files?\n1. Yes\n2. No\n[Choose 1 or 2] : ");
-        scanf("%d",&ch);
-        if(ch==2){
+        printf("Do you want to add more files?(Y/N) : \n");
+        scanf(" %c",&ch);
+        if(ch=='n'||ch=='N'){
             break;
         }
     }
