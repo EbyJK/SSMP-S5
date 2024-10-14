@@ -53,9 +53,14 @@ void main(){
             }
             int flag=0;
             while(fscanf(optab,"%s %s",s1,s2)!=EOF){
-                if(strcmp(s1,str2)==0){
+                if(strcmp(s1,str2)==0 || (str2[0]=='+' && strcmp(s1,str2+1)==0)){
                     flag=1;
-                    locctr+=3;
+                    if(str2[0]=='+'){
+                        locctr+=4;
+                    }else{
+                        locctr+=3;
+                    }
+                    
                     break;
                 }
             }
