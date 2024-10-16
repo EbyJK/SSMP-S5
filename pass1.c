@@ -102,7 +102,7 @@ void main()
         }
         int_to_hex(prev, h);
         prev = locctr;
-        fprintf(intermediate_file, "%s %s %s %s\n", h, str1, str2, str3);
+        fprintf(intermediate_file, "%s %s %s %s\n", h,(strcmp(str1,"-")==0)?  "" : str1, str2, str3);
     }
     fprintf(program_size, "Program size (in decimal): %d\n", locctr - hex_to_int(start));
     int_to_hex((locctr - hex_to_int(start)), h);  // Convert the program size to hexadecimal
