@@ -106,6 +106,7 @@ void main()
     }
     fprintf(program_size, "Program size (in decimal): %d\n", locctr - hex_to_int(start));
     int_to_hex((locctr - hex_to_int(start)), h);  // Convert the program size to hexadecimal
+    printf("\n");
     fprintf(program_size, "Program size (in hexadecimal): %s\n", h);  // Print the hexadecimal value
 
 
