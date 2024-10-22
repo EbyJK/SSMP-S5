@@ -1,3 +1,4 @@
+
 // #include<stdio.h>
 // #include<stdlib.h>
 // #include<string.h>
@@ -206,6 +207,9 @@
 //     }
 // }
 
+
+//use the above if needed , but lacks certain portions and functionalities
+// finalized code on my side.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
