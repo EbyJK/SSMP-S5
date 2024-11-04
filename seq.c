@@ -87,7 +87,7 @@ int main()
             for(j=f[i].start;j<f[i].start+ f[i].block;j++){
                 printf("%d ",j);
                 if(j<f[i].start+ f[i].block -1){
-                    printf("");
+                    printf("");     //used to add separators for blocks
 
                 }
             }
